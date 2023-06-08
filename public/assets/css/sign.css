@@ -1,0 +1,44 @@
+*{
+    list-style-type: none;
+    text-decoration: none;
+    overflow: hidden;
+}
+#left-side {
+    background: linear-gradient(to right, rgb(0, 217, 255), rgb(235, 110, 235));
+    background-size: cover;
+    height: 100vh;
+    width: 45%;
+    padding-top: 50px;
+}
+#sign-div {
+    margin: 50px;
+    padding: 50px;
+    width: 100%;
+}
+h1 {
+    padding: 20px ;
+}
+#btm{
+    padding-bottom: 20px;
+}
+.social li {
+    display: inline-block;
+    position: relative; }
+.social li a {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background-color: #8186d5;
+    color: #fff;
+}
+.social li a > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }

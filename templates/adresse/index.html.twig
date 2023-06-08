@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{asset('assets/css/adresse.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Accueil</title>
+  </head>
+<body>
+    <header class="header">
+  <div class="header-inner">
+    <div class="container-fluid px-lg-5">
+      <nav class="navbar navbar-expand-lg my-navbar">
+            <a class="navbar-brand" href="#"><span class="logo">
+              <img src="{{asset('assets/img/logo5.png')}}" class="img-fluid" style="width:30px; margin:-3px 0px 0px 0px;">Néro Mark</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"><i class="fas fa-bars" style="margin:5px 0px 0px 0px;"></i></span>
+            </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+            <li class="nav-item active">
+              <a class="nav-link active" href="#scrollspyHeading1">Accueil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#scrollspyHeading2">A propos</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{{path('page_client')}}">Produits</a>
+          </ul>
+        <form class="form-inline my-2 my-lg-0">
+          {% if app.user %}
+          <a href="{{path('account_address')}}" class="header-btn my-2 mx-2 my-sm-0" type="submit">Mon compte</a>
+          <a href="{{path('app_logout')}}" class="header-btn my-2 mx-2 my-sm-0" type="submit">Deconnecter</a>
+          {% else %}
+            <a href="{{path('connexion')}}" class="header-btn my-2 mx-2 my-sm-0" type="submit">Se connecter</a>
+            <a href="{{path('inscription')}}" class="header-btn my-2 mx-2 my-sm-0" type="submit">S'inscrire</a>
+          {% endif %}
+        </form>
+      </div>
+</nav>
+    </div>
+  </div>
+</header>
+<section class="content-banner" style="color: #ffffff;
+background-image: url({{asset('assets/img/Penguins.jpg')}});
+min-height:150px;
+height:100%;
+position: relative;
+background-position: center center;
+background-size: cover;
+padding-top: 125px;
+">
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-12">
+                  <div class="banner-con text-center">
+                      <p class="first-title">Gérer votre panier ici : {{app.user.nom}}</p>
+                      <p class="banner-des">Regarder votre panier dans cette page</p>
+                  </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+        {#  <a href="{{ path('app_account') }}">Retour</a> #} 
+        <hr>
+        {% if app.user.adresses|length == 0 %}
+        <p class="text-center">
+            Vous n'avez pas encore ajouter d'adresse dans votre compte. Pour en ajouter une, veuillez <a href="{{ path('account_address_add') }}">cliquer ici</a>
+        </p>
+        {% else %}
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between">
+                    <h1 class="col-4 d-flex justify-content-center">Vos adresse actuel</h1>
+                    <button class="btn btn-outline-primary col-3 mx-5"><a href="{{ path('account_address_add') }}">Ajouter un autre adresse</button>
+                </div>
+            </div>
+            <hr>
+        <div class="row">
+            {% for address in app.user.adresses %}
+            
+                <div class="col-4 mx-4">
+                    <div class="card" style="width:20rem">
+                        <div class="card-body">
+                        <h4 class="card-title">{{ address.nom }}</h4>
+                        <p class="card-text">
+                            {{ address.adresse }},</br>
+                            {{ address.codePostal }} - {{ address.pays }} - {{ address.ville }}
+                        </p>
+                        <a href="{{ path('account_address_edit', {'id': address.id} )}}" class="btn btn-primary">Modifier</a>
+                        <a href="{{ path('account_address_delete', {'id': address.id} )}}" class="btn btn-danger">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+        {% endif %}
+
+</body>
+</html>

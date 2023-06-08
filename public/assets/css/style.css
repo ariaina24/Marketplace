@@ -1,0 +1,20 @@
+*{
+    list-style-type: none;
+    text-decoration: none;
+    overflow: hi;
+}
+#left-side {
+    background: url('/Penguins.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+#login-div {
+    margin: 50px 100px;
+    padding: 50px;
+}
+h1 {
+    padding: 50px 20px 30px 20px;
+}
+#btm{
+    padding-bottom: 50px;
+}

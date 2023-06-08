@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/commande.css')}}">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="text-center p-4 btn btn-success btn-block"> Payement Réussi </h1>
+    </div>
+    <div class="container mt-4">
+        Bonjour <strong> {{ order.user.nom }} {{ order.user.prenom }} </strong>, <br/><br/>
+        Nous vous remercions pour votre commande n°: <b class="badge badge-primary"> {{ order.reference }} </b>. <br/>
+        Une confirmation vient d'être envoyée par email à l'adresse <b> {{ order.user.email }} </b>.
+        <hr>
+        Votre commande sera livrée par <strong> {{ order.transporteurName }} </strong> à l'adresse suivante : <br>
+        {{ order.livraison|raw }}
+        <hr>
+        Pour commander d'autres produits veuillez <a href=" {{path('page_client')}} ">cliquer ici</a>
+        </p>
+    </div>
+
